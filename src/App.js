@@ -145,7 +145,7 @@ function shuffle(squares, size) {
       inversionCount++;
     }
   }
-  if (inversionCount % 2 != 0) {
+  if (inversionCount % 2 == 0) {
     squares = shuffle(squares, size);
   }
   
