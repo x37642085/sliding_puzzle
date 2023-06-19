@@ -63,6 +63,7 @@ function Board({ squares, size, onPlay }) {
       default:
         break;
     }
+    onPlay(nextSquares);
     if (calculateWinner(nextSquares)) {
       nextSquares[size*size-1] = size*size;
     }
