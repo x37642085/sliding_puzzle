@@ -102,7 +102,7 @@ export default function Game() {
   function retry() {
     setSquares(boardData, size);
   }
-
+  console.log(squares);
   return (
     <>
       <div className="game">
@@ -112,7 +112,7 @@ export default function Game() {
       </div>
       <div className="game">
         <div className="game-info">
-          <button className="retry" onClick={() => retry()}><img src="images/retry.png"/></button>
+          <button className="retry" onClick={() => retry()}><img src="images/retry.png" alt="retry"/></button>
         </div>
       </div>
     </>
@@ -129,15 +129,25 @@ function calculateWinner(squares) {
 }
 
 function shuffle(squares, size) {
+  var inversionCount = 0;
   for (let i = squares.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
-    [squares[i], squares[j]] = [squares[j], squares[i]];
+    if (i != j) {
+      [squares[i], squares[j]] = [squares[j], squares[i]];
+      inversionCount++;
+    }
+    
   }
   for (let i = 0; i < squares.length-1; i++) {
     if (squares[i] == 0) {
       squares[i] = squares[size*size-1];
       squares[size*size-1] = 0;
+      inversionCount++;
     }
   }
+  if (inversionCount % 2 != 0) {
+    squares = shuffle(squares, size);
+  }
+  
   return squares;
 }
