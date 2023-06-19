@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Sliding Puzzle",
+  "name": "Sliding Puzzle",
   "icons": [
     {
       "src": "favicon.ico",
